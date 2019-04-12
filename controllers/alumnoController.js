@@ -245,14 +245,21 @@ module.exports["deleteAlumno"] = function (req,res){
             .findById(req.query.idAlumno)
             .then(alumno => {
               if (!alumno) {
-                return res.status(400).send({
-                  message: 'Course Not Found',
-                });
+                res.json({
+                    status: 0,
+                    message: "Alumno no encontrado."
+                })
               }
               return alumno
                 .destroy()
-                .then(() => res.status(204).send())
-                .catch((error) => res.status(400).send(error));
+                .then(() => res.json({
+                    status: 0,
+                    message: "Alumno eliminado."
+                }))
+                .catch((error) => res.json({
+                    status: 0,
+                    message: "Error al eliminar."
+                }));
             })
             .catch((error) => res.status(400).send(error));
         
