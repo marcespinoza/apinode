@@ -56,6 +56,7 @@
     router.get('/alumno', auth, alumnoCtrl.getAlumno);
     router.post('/setalumno', auth, alumnoCtrl.setAlumno);
     router.put('/updateAlumno', auth, alumnoCtrl.updateAlumno);
+    router.post('/deleteAlumno', auth, alumnoCtrl.deleteAlumno);
     router.get('/alumnoasistencia', auth, alumnoCtrl.getAlumnoAsistencia);
     
 

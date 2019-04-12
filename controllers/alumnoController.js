@@ -230,3 +230,32 @@ module.exports["updateAlumno"] = function (req,res){
     }
 });  
 }
+//eliminar alumno
+module.exports["deleteAlumno"] = function (req,res){
+    jwt.verify(req.token, env.SECRET_HASH, function (err, data) {
+        console.log(req.token);
+        console.log(req.body);
+        if(err) {
+            res.json({
+                status: 0,
+                message: "No tiene acceso a este recurso."
+            })
+        } else {
+            Alumno
+            .findById(req.query.idAlumno)
+            .then(alumno => {
+              if (!alumno) {
+                return res.status(400).send({
+                  message: 'Course Not Found',
+                });
+              }
+              return alumno
+                .destroy()
+                .then(() => res.status(204).send())
+                .catch((error) => res.status(400).send(error));
+            })
+            .catch((error) => res.status(400).send(error));
+        
+    }
+});  
+}
