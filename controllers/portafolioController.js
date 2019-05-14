@@ -204,6 +204,7 @@ module.exports["getInstrumento"] = function(req, res) {
                                 index = values.indexOf(val);
         
                                 let materiasCounter = 0;
+                                let reactivosCounter = 0;
                                 
                                 let aspecto1 = parseInt(collection[i].Aspecto1);
         
@@ -214,31 +215,46 @@ module.exports["getInstrumento"] = function(req, res) {
                                 let aspecto4 = parseInt(collection[i].Aspecto4);
                                 
                                 let aspecto5 = parseInt(collection[i].Aspecto5);
+
+                                let nombreReactivo1 = parseInt(collection[i].nombreReactivo1);
+                        
+                                let nombreReactivo2 = parseInt(collection[i].nombreReactivo2);
+                        
+                                let nombreReactivo3 = parseInt(collection[i].nombreReactivo3);
+                        
+                                 let nombreReactivo4 = parseInt(collection[i].nombreReactivo4);
+                        
+                                 let nombreReactivo5 = parseInt(collection[i].nombreReactivo5);
         
                                 let promedio;
         
                                 if (aspecto1 !== 0) {
                                     materiasCounter++;
+                                    reactivosCounter = nombreReactivo1 + reactivosCounter;
                                 }
         
                                 if (aspecto2 !== 0) {
                                     materiasCounter++;
+                                    reactivosCounter = nombreReactivo2 + reactivosCounter;
                                 }
         
                                 if (aspecto3 !== 0) {
                                     materiasCounter++;
+                                    reactivosCounter = nombreReactivo3 + reactivosCounter;
                                 }
         
                                 if (aspecto4 !== 0) {
                                     materiasCounter++;
+                                    reactivosCounter = nombreReactivo4 + reactivosCounter;
                                 }
         
                                 if (aspecto5 !== 0) {
                                     materiasCounter++;
+                                    reactivosCounter = nombreReactivo5 + reactivosCounter;
                                 }
         
                                 if (materiasCounter > 0) {
-                                    promedio = (aspecto1 + aspecto2 + aspecto3 + aspecto4 + aspecto5) / materiasCounter;
+                                    promedio = ((aspecto1 + aspecto2 + aspecto3 + aspecto4 + aspecto5) / (reactivosCounter)) * 10;
                                 } else {
                                     promedio = 0;
                                 }
