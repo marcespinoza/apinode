@@ -151,7 +151,6 @@ module.exports["showAsistenciaAlumno"] = function(req, res) {
 
         }
     });
-
 }
 
 

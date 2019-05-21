@@ -187,7 +187,7 @@ module.exports["getInstrumento"] = function(req, res) {
                     const portafolio = "'" + req.query.portafolio + "'";
                     const portafolioAlumno = "'" + req.query.portafolioAlumno + "'";
                    // instanceSequelize.query('SELECT "Trabajo"."IDTrabajo", "Trabajo"."IDBimestre", "Trabajo"."Nombre", "Trabajo"."Observaciones", "Trabajo"."Fecha", "Trabajo"."Tipo", "TrabajoAlumno"."Estado" FROM "Trabajo" INNER JOIN "TrabajoAlumno" ON "Trabajo"."IDTrabajo" = "TrabajoAlumno"."IDTrabajo" WHERE "TrabajoAlumno"."IDAlumno"='+ alumno +' AND "Trabajo"."IDBimestre"=' + bimestre + ';').then(trabajos => {
-                    instanceSequelize.query('SELECT "Portafolio"."IDPortafolio", "PortafolioAlumno"."IDPortafolioAlumno","Portafolio"."Nombre","Portafolio"."FechaEntrega","Portafolio"."Descripcion","PortafolioAlumno"."Estado", "Portafolio"."Aspecto1" AS "nombreAspecto1", "Portafolio"."Aspecto2" AS "nombreAspecto2", "Portafolio"."Aspecto3" AS "nombreAspecto3", "Portafolio"."Aspecto4" AS "nombreAspecto4", "Portafolio"."Aspecto5" AS "nombreAspecto5", "PortafolioAlumno"."Aspecto1", "PortafolioAlumno"."Aspecto2", "PortafolioAlumno"."Aspecto3", "PortafolioAlumno"."Aspecto4", "PortafolioAlumno"."Aspecto5", "PortafolioAlumno"."IDAlumno" FROM "PortafolioAlumno" INNER JOIN "Portafolio" ON "Portafolio"."IDPortafolio" = "PortafolioAlumno"."IDPortafolio" WHERE "PortafolioAlumno"."IDPortafolio" = ' + portafolio + 'AND "PortafolioAlumno"."IDPortafolioAlumno" = ' + portafolioAlumno).then(instrumentos => {
+                    instanceSequelize.query('SELECT "Portafolio"."IDPortafolio", "PortafolioAlumno"."IDPortafolioAlumno","Portafolio"."Nombre","Portafolio"."FechaEntrega","Portafolio"."Descripcion","PortafolioAlumno"."Estado", "Portafolio"."Reactivo1" AS "nombreReactivo1", "Portafolio"."Reactivo2" AS "nombreReactivo2", "Portafolio"."Reactivo3" AS "nombreReactivo3", "Portafolio"."Reactivo4" AS "nombreReactivo4", "Portafolio"."Reactivo5" AS "nombreReactivo5",  "Portafolio"."Aspecto1" AS "nombreAspecto1", "Portafolio"."Aspecto2" AS "nombreAspecto2", "Portafolio"."Aspecto3" AS "nombreAspecto3", "Portafolio"."Aspecto4" AS "nombreAspecto4", "Portafolio"."Aspecto5" AS "nombreAspecto5", "PortafolioAlumno"."Aspecto1", "PortafolioAlumno"."Aspecto2", "PortafolioAlumno"."Aspecto3", "PortafolioAlumno"."Aspecto4", "PortafolioAlumno"."Aspecto5", "PortafolioAlumno"."IDAlumno" FROM "PortafolioAlumno" INNER JOIN "Portafolio" ON "Portafolio"."IDPortafolio" = "PortafolioAlumno"."IDPortafolio" WHERE "PortafolioAlumno"."IDPortafolio" = ' + portafolio + 'AND "PortafolioAlumno"."IDPortafolioAlumno" = ' + portafolioAlumno).then(instrumentos => {
                         console.log(instrumentos);
                        if (instrumentos.length == 0) {
                         res.json({
@@ -225,7 +225,7 @@ module.exports["getInstrumento"] = function(req, res) {
                                  let nombreReactivo4 = parseInt(collection[i].nombreReactivo4);
                         
                                  let nombreReactivo5 = parseInt(collection[i].nombreReactivo5);
-        
+                                 console.log('promediosss'+aspecto1 + nombreReactivo1 + nombreReactivo2 +nombreReactivo3 + nombreReactivo4 + nombreReactivo5);       
                                 let promedio;
         
                                 if (aspecto1 !== 0) {
@@ -259,7 +259,7 @@ module.exports["getInstrumento"] = function(req, res) {
                                     promedio = 0;
                                 }
         
-                                console.log('promedio' + promedio)
+                                console.log('promedio' + reactivosCounter)
         
                                 if (index > -1){
                                  delete collection[i].IDPortafolio; 
